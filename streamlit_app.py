@@ -6,7 +6,7 @@ import numpy as np
 import pickle
 import plotly.express as px
 
-import cv2
+from skimage.transform import resize
 
 ## App Title
 st.markdown(
@@ -103,7 +103,9 @@ def scale_fish_to_input(orig_img_array, user_input_length, user_input_height):
     new_y = int(orig_img_array.shape[0] * scale_y)
     new_x = int(orig_img_array.shape[1] * scale_x)
     
-    scaled_img = cv2.resize(orig_img_array, (new_x, new_y))
+    scaled_img = resize(orig_img_array, (new_y, new_x))
+    scaled_img = (scaled_img * 255).astype(np.uint8)
+    #scaled_img = cv2.resize(orig_img_array, (new_x, new_y))
     
     ## hard coded as shape of canvas should never change
     canvas = np.zeros((567, 1899), dtype=np.uint8)
