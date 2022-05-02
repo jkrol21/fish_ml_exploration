@@ -212,3 +212,6 @@ fig = px.scatter(model_predictions,
                     title="Model Predictions on full Dataset")
 fig.update_traces(marker_size=20)
 st.plotly_chart(fig)
+
+
+st.markdown("Code for this app: https://github.com/jkrol21/fish_ml_exploration")
